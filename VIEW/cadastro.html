@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro</title>
+    <link rel="stylesheet" href="../CSS/cadastro.css">
+    <script src="../JavaScript/script.js"></script>
+</head>
+<body>
+
+    <main class="main-container">
+
+       <!-- <div class="form-container">
+            <form id="form-login">
+                <h2>Login</h2>
+                <input type="email" placeholder="E-Mail" required id="login-email">
+                <input type="password" placeholder="Senha" required id="login-senha">
+                <button type="submit" id="botao-login">Login</button>
+            </form>
+        </div> -->
+
+        <div class="form-container">
+            <form id="form-cadastro">
+                <h2>Faça seu cadastro</h2>
+                <input type="text" placeholder="Nome" required id="cadastro-nome">
+                <input type="email" placeholder="E-Mail" required id="cadastro-email">
+                <input type="password" placeholder="Senha" required id="cadastro-senha">
+                <input type="tel" placeholder="Celular" id="cadastro-celular">
+                <input type="text" placeholder="CPF/CNPJ" id="cadastro-documento">
+                <button type="button" id="botao-criar-conta" onclick="postData()">Criar Conta</button>
+                <button type="button" id="outra-pagina" onclick="window.location.href='visualizar.html'">VISUALIZAR DADOS</button>
+            </form>
+        </div>
+
+    </main>
+
+
+</body>
+</html>
