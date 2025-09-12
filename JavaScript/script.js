@@ -29,8 +29,21 @@ async function postData(){
     
     console.log("oi")
     console.log(api)
-    let data = await api.json();
-    console.log("Resposta API:", data)
+    
+    
+
+    if (api.ok) {
+        let data = await api.json();
+        console.log(data);
+        alert('Cadastro realizado com sucesso!')
+        document.getElementById("form-cadastro").reset();
+        console.log("Resposta API:", data);
+    } else {
+    
+    
+        let errorApi = await api.json();
+        let errors = errorApi.data.errors;
+    }
 
 }
 
