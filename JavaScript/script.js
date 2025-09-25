@@ -32,8 +32,6 @@ async function postData(){
 
         });
     
-    console.log("oi")
-    console.log(api)
     
     
 
