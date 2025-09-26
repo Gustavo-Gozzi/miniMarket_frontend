@@ -1,7 +1,5 @@
-// Configuração da API
 const API_BASE_URL = 'http://127.0.0.1:5001';
 
-// Utility functions
 function getToken() {
     return localStorage.getItem('token');
 }
@@ -23,7 +21,6 @@ function removeToken() {
     localStorage.removeItem('user_id');
 }
 
-// Função de cadastro (para página cadastro.html)
 async function postData() {
     const name = document.getElementById("cadastro-nome").value;
     const email = document.getElementById("cadastro-email").value;
@@ -71,7 +68,6 @@ async function postData() {
     }
 }
 
-// Função de login (para página cadastro.html)
 async function realizarLogin() {
     const email = document.getElementById('login-email').value.trim();
     const password = document.getElementById('login-senha').value.trim();
@@ -118,7 +114,6 @@ async function realizarLogin() {
     }
 }
 
-// Função para buscar dados do usuário (para página visualizar.html)
 async function getDados() {
     const num = document.getElementById("id").value;
 
@@ -166,7 +161,6 @@ async function getDados() {
     }
 }
 
-// Função para carregar dados do usuário logado (para página home.html)
 async function carregarDadosUsuario() {
     const userId = getUserId();
     const token = getToken();
@@ -193,7 +187,6 @@ async function carregarDadosUsuario() {
             console.error("Erro ao carregar dados:", errorApi);
             alert("Erro ao carregar dados: " + (errorApi.erro || errorApi.message || "tente novamente."));
             
-            // Se erro de autenticação, redirecionar para login
             if (api.status === 401 || api.status === 403) {
                 removeToken();
                 window.location.href = 'cadastro.html';
@@ -204,7 +197,6 @@ async function carregarDadosUsuario() {
         const user = await api.json();
         console.log('Dados recebidos da API:', user);
         
-        // ===== PREENCHER CABEÇALHO DE BOAS-VINDAS =====
         const nomeElemento = document.getElementById('nome-titulo');
         const emailElemento = document.getElementById('email-titulo');
         
@@ -240,7 +232,6 @@ async function carregarDadosUsuario() {
             }
         });
         
-        // Inicialmente desabilitar campos para edição
         desabilitarEdicao();
         
         console.log('Todos os dados carregados com sucesso!');
@@ -251,7 +242,6 @@ async function carregarDadosUsuario() {
     }
 }
 
-// Função para habilitar/desabilitar edição (para página home.html)
 function habilitarEdicao() {
     const campos = ['cadastro-nome', 'cadastro-email', 'cadastro-senha', 'cadastro-phone', 'cadastro-documento'];
     campos.forEach(id => {
@@ -286,7 +276,6 @@ function desabilitarEdicao() {
     if (botaoSalvar) botaoSalvar.style.display = 'none';
 }
 
-// Função para salvar alterações do usuário (para página home.html)
 async function salvarAlteracoes() {
     const userId = getUserId();
     const token = getToken();
@@ -338,9 +327,7 @@ async function salvarAlteracoes() {
             alert("Dados atualizados com sucesso!");
             
             desabilitarEdicao();
-            // Limpar campo de senha após salvar
             document.getElementById('cadastro-senha').value = '';
-            // Recarregar dados atualizados
             carregarDadosUsuario();
         } else {
             const errorApi = await api.json();
@@ -353,7 +340,6 @@ async function salvarAlteracoes() {
     }
 }
 
-// Função para deletar conta (para página home.html)
 async function deletarConta() {
     if (!confirm('Tem certeza que deseja deletar sua conta? Esta ação não pode ser desfeita!')) {
         return;
@@ -405,9 +391,7 @@ function logout() {
     }, 1000);
 }
 
-// Event listeners para diferentes páginas
 document.addEventListener('DOMContentLoaded', function() {
-    // Página cadastro.html
     const formLogin = document.getElementById('form-login');
     if (formLogin) {
         formLogin.addEventListener('submit', function(e) {
@@ -424,9 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Página home.html
     if (window.location.pathname.includes('home.html')) {
-        // Verificar se usuário está logado
         if (!getToken() || !getUserId()) {
             alert('Você precisa fazer login primeiro.');
             window.location.href = 'cadastro.html';
@@ -451,7 +433,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Página visualizar.html
     if (window.location.pathname.includes('visualizar.html')) {
         const botaoVerDados = document.getElementById('botao-criar-conta');
         if (botaoVerDados) {
@@ -460,7 +441,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Funções extras para atualizar e deletar na página visualizar (caso você queira adicionar)
 async function updateDados() {
     const num = document.getElementById("id").value;
     const name = document.getElementById("user-name").value;
