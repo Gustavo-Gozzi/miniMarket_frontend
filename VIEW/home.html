@@ -4,36 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Dados - MiniMarket</title>
-    <link rel="stylesheet" href="..\CSS\home.css">
+    <link rel="stylesheet" href="../CSS/home.css">
+    <script src="../JavaScript/script.js"></script>
 </head>
 <body>
     <header class="header">
-        <h1><img src="..\Img\logo_mm.png" alt=""></h1>
+        <h1><img src="../Img/logo_mm.png" alt="MiniMarket"></h1>
     </header>
 
     <main class="main-container">
         <div class="content-wrapper">
             <div class="welcome-section">
-                <h2>Bem-vindo, <h2 id="nome-titulo" class="nome-class" >[Nome]</h2></h2>
-                <h2 id="email-titulo" class="email-class">[e-mail]</h2>
+                <h2>Bem-vindo, <span id="nome-titulo">[Nome]</span>!</h2>
+                <p>Email: <span id="email-titulo">[e-mail]</span></p>
             </div>
 
             <div class="data-section">
                <form id="form-cadastro">
                 <h3>Seus dados</h3>
-                <input type="text" placeholder="Nome" required id="cadastro-nome" class="nome-class">
-                <input type="email" placeholder="E-Mail" required id="cadastro-email" class="email-class">
-                <input type="password" placeholder="Senha" required id="cadastro-senha">
-                <input type="tel" placeholder="Celular" id="cadastro-celular">
-                <input type="text" placeholder="CPF/CNPJ" id="cadastro-documento">
-                <button type="button" id="botao-editar">Editar ✏️</button>
-                <button type="button" id="botao-salvar" onclick="postData()">Salvar 💾</button>
-                <button type="button" id="botao-deletar" onclick="postData()">Deletar conta ❌</button>
+                <input type="text" placeholder="Nome" required id="cadastro-nome" class="nome-class" disabled>
+                <input type="email" placeholder="E-Mail" required id="cadastro-email" class="email-class" disabled>
+                <input type="password" placeholder="Senha" id="cadastro-senha" disabled>
+                <input type="tel" placeholder="Celular" id="cadastro-phone" disabled>
+                <input type="text" placeholder="CPF/CNPJ" id="cadastro-documento" disabled>
+                <div style="display: flex; flex-direction: row;">
+                    <button type="button" id="botao-editar">Editar ✏️</button>
+                    <button type="button" id="botao-salvar" style="display: none;">Salvar 💾</button>
+                    <button type="button" id="botao-deletar">Deletar conta ❌</button>
+                    <button type="button" onclick="logout()">Logout 🏃‍♂️</button>
+                </div>
                 </form>
             </div>
         </div>
     </main>
-
-
 </body>
 </html>
