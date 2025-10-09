@@ -1,0 +1,160 @@
+:root {
+    --cor-fundo: #3e6b46;
+    --cor-botao: #3e6b46;
+    --cor-botao-hover: #315538;
+    --cor-container: #f7f7f7;
+    --cor-borda: #ddd;
+    --cor-texto-principal: #333;
+    --raio-borda: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e5e5e5;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: #3E6B46;
+    width: 100%; /* Corrigido de "widows" para "width" */
+    height: 89px;
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 50px 15px 50px;
+    display: flex; /* Adicione flexbox */
+    justify-content: space-between; /* Espaça logo e menu */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.header h1 {
+    margin: 0; /* Remove margem padrão do h1 */
+}
+
+.header h1 img {
+    width: 115px;
+    height: 72px;
+    display: block; /* Remove espaço extra abaixo da imagem */
+}
+
+.list-header {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center; /* Centraliza os itens verticalmente */
+}
+
+.list-link a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.list-link a:hover {
+    color: #00490d;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 24px 144px;
+}
+
+.content-wrapper {
+    background: #f7f7f7;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 164px 145px;
+    width: 100%;
+    height: 888px;
+    
+    gap: 15px;
+    align-items: start;
+    box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Data Section */
+.data-section {
+    width: 100%;
+    padding-left: 20px;
+}
+
+.data-section h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+
+
+/* Form Styling */
+#form-cadastro{
+    width: 100%;
+}
+.product {
+    list-style: none;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    
+    
+}
+
+.description-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 10px;
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr 1fr 1fr;
+    align-items: center;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px 0 20px 0;
+    margin-bottom: 10px;
+}
+
+.description-list li{
+    margin: 10px 0;
+}
+
+.description-list li:nth-child(1){
+    margin-left: 5%;
+}
+
+.description-list li:nth-child(4){
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.product button {
+    width: 100px;
+    padding: 15px;
+    border: none;
+    border-radius: var(--raio-borda);
+    background-color: var(--cor-botao);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+
