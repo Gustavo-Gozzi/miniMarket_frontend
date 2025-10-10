@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualizar Dados - MiniMarket</title>
     <link rel="stylesheet" href="../CSS/cadastro-produto.css">
-    <script src="../JavaScript/script.js"></script>
+    <!-- <script src="../JavaScript/script.js"></script> -->
+    <script src="../JavaScript/cadastrar-produto.js"></script>
 </head>
 <body>
     <header class="header">
@@ -24,12 +25,13 @@
             <div class="data-section">
                <form id="form-cadastro">
                 <h3>Cadastrar produto</h3>
-                <input type="text" placeholder="Nome do produto" required id="nome-produto" class="nome-produto-class">
-                <input type="text" placeholder="Preço" required id="preco" class="preco-class">
-                <input type="number" placeholder="Quantidade" id="quantidade" class="quantidade-class">
+                <input type="text" placeholder="Nome do produto" required id="name" class="nome-produto-class">
+                <input type="text" placeholder="Preço" required id="price" class="preco-class">
+                <input type="text" placeholder="Quantidade" id="quantity" class="quantidade-class">
+                <input type="text" placeholder="ID" id="id_seller" class="id-seller-class">
 
                 <div style="display: flex; flex-direction: row;">
-                    <button type="button" id="botao-salvar">Salvar 💾</button>
+                    <button type="button" id="botao-salvar" onclick="postProduct()">Salvar 💾</button>
                 </div>
                 </form>
             </div>

@@ -1,89 +1,104 @@
-// Exemplo de lista de produtos (substitua pelos seus dados reais)
-let produtos = [
-    { nome: 'Notebook', quantidade: 5, preco: 10.10 },
-    { nome: 'Mouse', quantidade: 10, preco: 10.00 },
-    { nome: 'Teclado', quantidade: 8, preco: 10.00 },
-    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
-    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
-    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
-    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
-    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
-    { nome: 'Monitor', quantidade: 3, preco: 10.00 }
-];
+const API_BASE_URL = 'http://127.0.0.1:5001';
 
+function criarItemLista(produto) {
+    const { id, name, quantity, price } = produto;
 
-
-
-function criarItemLista(nome, quantidade, preco, idUnico) {
-
-    // Criar o <li> principal
     const li = document.createElement('li');
     li.className = 'list-class';
-    li.id = `list-id-${idUnico}`;
-    
-    // Criar o <ul> interno
+    li.id = `list-id-${id}`;
+
     const ul = document.createElement('ul');
     ul.className = 'description-list';
-    
-    // Criar item do nome
-    const liNome = document.createElement('li');
-    liNome.textContent = nome;
-    
-    // Criar item da quantidade
-    const liQuantidade = document.createElement('li');
-    liQuantidade.textContent = `QTD: ${quantidade}`;
 
-    // Criar item do preço
+    const liNome = document.createElement('li');
+    liNome.textContent = name;
+
+    const liQuantidade = document.createElement('li');
+    liQuantidade.textContent = `QTD: ${quantity}`;
+
     const liPreco = document.createElement('li');
-    liPreco.textContent = `R$: ${preco.toFixed(2)}`;
-    
-    // Criar item do botão editar
-    const liEditar = document.createElement('li');
-    const btnEditar = document.createElement('button');
-    btnEditar.className = "ClassButton"
-    btnEditar.type = 'button';
-    btnEditar.id = `botao-editar-${idUnico}`;
-    btnEditar.textContent = 'Editar ✏️';
-    liEditar.appendChild(btnEditar);
-    
-    // Criar item do botão deletar
-    const liDeletar = document.createElement('li');
-    const btnDeletar = document.createElement('button');
-    btnDeletar.className = "ClassButton"
-    btnDeletar.type = 'button';
-    btnDeletar.id = `botao-deletar-${idUnico}`;
-    btnDeletar.textContent = 'Deletar ❌';
-    liDeletar.appendChild(btnDeletar);
-    
-    // Adicionar todos os items ao <ul>
-    ul.appendChild(liNome);
-    ul.appendChild(liQuantidade);
-    ul.appendChild(liPreco);
-    ul.appendChild(liEditar);
-    ul.appendChild(liDeletar);
-    
-    // Adicionar o <ul> ao <li> principal
+    liPreco.textContent = `R$: ${price.toFixed(2)}`;
+
+    const criarBotaoItem = (texto, idSufixo) => {
+        const item = document.createElement('li');
+        const btn = document.createElement('button');
+        btn.className = "ClassButton";
+        btn.type = 'button';
+        btn.id = `${idSufixo}-${id}`;
+        btn.textContent = texto;
+        item.appendChild(btn);
+        return item;
+    };
+
+    const liEditar = criarBotaoItem('Editar ✏️', 'botao-editar');
+    const liDeletar = criarBotaoItem('Deletar ❌', 'botao-deletar');
+
+    ul.append(liNome, liQuantidade, liPreco, liEditar, liDeletar);
+
     li.appendChild(ul);
-    
+
     return li;
 }
 
-// Função para listar produtos a partir de um array de objetos
 function listarProdutos(produtos) {
     const container = document.getElementById('product-1');
+
+    if (!container) {
+        return;
+    }
     
-    // Limpa o container antes de adicionar os novos itens
     container.innerHTML = '';
-    
-    // Percorre o array de produtos e cria cada item
-    produtos.forEach((produto, index) => {
-        const item = criarItemLista(produto.nome, produto.quantidade, produto.preco, index);
-        container.appendChild(item);
+
+    const fragment = document.createDocumentFragment();
+    produtos.forEach((produto) => {
+        const item = criarItemLista(produto); 
+        fragment.appendChild(item);
     });
+    
+    container.appendChild(fragment);
 }
 
+async function getDados() {
+    const produtosEncontrados = []; 
 
-// Quando a página carregar, renderiza os produtos
-window.addEventListener('DOMContentLoaded', () => {
-    listarProdutos(produtos);
-});
+    let token;
+    try {
+        const userData = localStorage.getItem("user");
+        token = JSON.parse(userData).access_token;
+    } catch (e) {
+        return;
+    }
+
+    let num = 1;
+
+    while (true) {
+        const url = `${API_BASE_URL}/product/${num}`;
+        
+        try {
+            const api = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            const product = await api.json(); 
+
+            if (!api.ok) {
+                break; 
+            }
+
+            produtosEncontrados.push(product);
+            
+            num++;
+
+        } catch (error) {
+            break;
+        }
+    }
+
+    listarProdutos(produtosEncontrados);
+}
+
+window.addEventListener('DOMContentLoaded', getDados);
