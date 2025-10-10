@@ -3,6 +3,11 @@ let produtos = [
     { nome: 'Notebook', quantidade: 5, preco: 10.10 },
     { nome: 'Mouse', quantidade: 10, preco: 10.00 },
     { nome: 'Teclado', quantidade: 8, preco: 10.00 },
+    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
+    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
+    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
+    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
+    { nome: 'Monitor', quantidade: 3, preco: 10.00 },
     { nome: 'Monitor', quantidade: 3, preco: 10.00 }
 ];
 
@@ -10,6 +15,7 @@ let produtos = [
 
 
 function criarItemLista(nome, quantidade, preco, idUnico) {
+
     // Criar o <li> principal
     const li = document.createElement('li');
     li.className = 'list-class';
@@ -34,6 +40,7 @@ function criarItemLista(nome, quantidade, preco, idUnico) {
     // Criar item do botão editar
     const liEditar = document.createElement('li');
     const btnEditar = document.createElement('button');
+    btnEditar.className = "ClassButton"
     btnEditar.type = 'button';
     btnEditar.id = `botao-editar-${idUnico}`;
     btnEditar.textContent = 'Editar ✏️';
@@ -42,6 +49,7 @@ function criarItemLista(nome, quantidade, preco, idUnico) {
     // Criar item do botão deletar
     const liDeletar = document.createElement('li');
     const btnDeletar = document.createElement('button');
+    btnDeletar.className = "ClassButton"
     btnDeletar.type = 'button';
     btnDeletar.id = `botao-deletar-${idUnico}`;
     btnDeletar.textContent = 'Deletar ❌';
