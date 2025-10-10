@@ -2,17 +2,23 @@ const API_BASE_URL = 'http://127.0.0.1:5001';
 
 
 async function postProduct() {
+    const userId = localStorage.getItem('user_id');
+
     const name = document.getElementById("name").value;
     const price = document.getElementById("price").value;
     const quantity = document.getElementById("quantity").value;
-    const id_seller = document.getElementById("id_seller").value;
+    const id_seller = userId;
 
     if (!name || !price || !quantity || !id_seller) {
         alert("Por favor, preencha todos os campos.");
         return;
     }
 
+    //const userId = getUserId();
+
     const url = `${API_BASE_URL}/product`;
+    
+    
 
     let body = {
         name: name,
