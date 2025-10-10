@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Dados - MiniMarket</title>
+    <link rel="stylesheet" href="../CSS/cadastro-produto.css">
+    <!-- <script src="../JavaScript/script.js"></script> -->
+    <script src="../JavaScript/cadastrar-produto.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1><img src="../Img/logo_mm.png" alt="MiniMarket"></h1>
+        <ul>
+            <li><a href="cadastrar-produto.html">Cadastrar produtos</a></li>
+            <li><a href="listar-produto.html">Ver produtos</a></li>
+            <li><a href="home.html">Perfil</a></li>
+        </ul>
+    </header>
+
+    <main class="main-container">
+        <div class="content-wrapper">
+            
+
+            <div class="data-section">
+               <form id="form-cadastro">
+                <h3>Cadastrar produto</h3>
+                <input type="text" placeholder="Nome do produto" required id="name" class="nome-produto-class">
+                <input type="text" placeholder="Preço" required id="price" class="preco-class">
+                <input type="text" placeholder="Quantidade" id="quantity" class="quantidade-class">
+                <!--<input type="text" placeholder="ID" id="id_seller" class="id-seller-class">-->
+
+                <div style="display: flex; flex-direction: row;">
+                    <button type="button" id="botao-salvar" onclick="postProduct()">Salvar 💾</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -43,7 +43,7 @@ body {
     display: block; /* Remove espaço extra abaixo da imagem */
 }
 
-ul {
+.list-header {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -52,14 +52,14 @@ ul {
     align-items: center; /* Centraliza os itens verticalmente */
 }
 
-li a {
+.list-link a {
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
     transition: color 0.2s;
 }
 
-li a:hover {
+.list-link a:hover {
     color: #00490d;
 }
 
@@ -78,39 +78,18 @@ li a:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 164px 145px;
     width: 100%;
-    height: 888px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    height: auto;
+    
     gap: 15px;
     align-items: start;
     box-shadow: 6px 6px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Welcome Section */
-.welcome-section {
-    padding-right: 20px;
-}
 
-.welcome-section h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 10px;
-    font-weight: 400;
-}
-
-.welcome-section .email-class {
-    color: #666;
-    font-size: 1rem;
-    margin-bottom: 20px;
-}
-
-#user-name {
-    color: #6b8e23;
-    font-weight: 500;
-}
 
 /* Data Section */
 .data-section {
+    width: 100%;
     padding-left: 20px;
 }
 
@@ -121,28 +100,55 @@ li a:hover {
     font-weight: 400;
 }
 
+
+
 /* Form Styling */
-
-
-#form-cadastro input {
+#form-cadastro{
     width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 38px;
-    border: 1px solid var(--cor-borda);
-    border-radius: var(--raio-borda);
-    font-size: 16px;
-    box-sizing: border-box;
+}
+.product {
+    list-style: none;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    
+    
 }
 
-#form-cadastro input:focus {
-    outline: none;
-    border-color: var(--cor-botao);
-    box-shadow: 0 0 0 2px rgba(62, 107, 70, 0.2);
+.description-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 10px;
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr 1fr 1fr;
+    align-items: center;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px 10px 20px 10px;
+    margin-bottom: 10px;
 }
 
+.description-list li{
+    margin: 10px 0;
+}
 
-#form-cadastro button {
-    width: 27.5%;
+.description-list li:nth-child(1){
+    margin-left: 5%;
+}
+
+.description-list li:nth-child(4){
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.ClassButton{
+    margin: 0 10px 0 0;
+}
+
+.product button {
+    width: 100px;
     padding: 15px;
     border: none;
     border-radius: var(--raio-borda);
@@ -152,14 +158,7 @@ li a:hover {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom:5px;
-    margin-left:2.5%;
-    margin-right:2.5%;
     display: inline-block;
 }
 
-
-.form-container button:hover {
-    background-color: var(--cor-botao-hover);
-}
 
