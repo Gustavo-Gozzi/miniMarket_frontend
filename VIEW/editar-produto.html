@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Produto - MiniMarket</title>
+    <link rel="stylesheet" href="../CSS/editar-produto.css">
+    <!-- <script src="../JavaScript/script.js"></script> -->
+    <script src="../JavaScript/editar-produto.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1><img src="../Img/logo_mm.png" alt="MiniMarket"></h1>
+    
+    </header>
+
+    <main class="main-container">
+        <div class="content-wrapper">
+            
+
+            <div class="data-section">
+               <form id="form-cadastro">
+                <h3>Alterar Produto</h3>
+                <input type="text" placeholder="Nome do produto" required id="name" class="nome-produto-class">
+                <input type="text" placeholder="Preço" required id="price" class="preco-class">
+                <input type="text" placeholder="Quantidade" id="quantity" class="quantidade-class">
+                <!--<input type="text" placeholder="ID" id="id_seller" class="id-seller-class">-->
+
+                <div style="display: flex; flex-direction: row;">
+                    <button type="button" id="botao-salvar" onclick="salvarAlteracoes()">Salvar Alterações💾</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
