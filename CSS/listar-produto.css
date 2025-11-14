@@ -43,7 +43,7 @@ body {
     display: block; /* Remove espaço extra abaixo da imagem */
 }
 
-.list-header {
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -52,14 +52,14 @@ body {
     align-items: center; /* Centraliza os itens verticalmente */
 }
 
-.list-link a {
+li a {
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
     transition: color 0.2s;
 }
 
-.list-link a:hover {
+li a:hover {
     color: #00490d;
 }
 
